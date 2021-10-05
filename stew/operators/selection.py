@@ -21,7 +21,7 @@ def dominates(self_obj_values: FitnessLike,
     other_arr = np.atleast_2d(other_obj_values)
     being_dominated = np.any(self_arr + worse_margin < other_arr, axis=-1)
     is_dominate = np.any(self_arr > other_arr + dominate_margin, axis=-1)
-    return is_dominate and not being_dominated
+    return is_dominate & (~being_dominated)
 
 
 def strictly_dominates(self_obj_values: FitnessLike, other_obj_values: FitnessLike) -> np.ndarray:
